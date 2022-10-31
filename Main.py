@@ -84,6 +84,12 @@ while True:
             #cv2.drawContours(roi, [cnt], -1, (0, 255, 0), 2)
             x, y, w, h = cv2.boundingRect(cnt)
             Detections.append([x, y, w, h])
+
+            startpoint = (x,y)
+            endpoint=(x+w,y+h)
+            color = (0, 255, 0)
+            thickness = 2
+            frame = cv2.rectangle(frame,startpoint,endpoint,color,thickness)
     
     # 2. Object Tracking
     boxes_ids = Trackers.update(Detections)
